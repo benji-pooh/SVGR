@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SVGr</title>
+        <script src="file:///Users/3165894/Downloads/SVGr_files/tailwind.min.js"></script>
+        <style>.tooltip { position: relative; display: inline-block; cursor: pointer; } .tooltip .tooltiptext { visibility: hidden; width: 200px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -100px; opacity: 0; transition: opacity 0.3s; } .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+    </head>
+    <body class="bg-gray-100 p-8">
+        <div class="container mx-auto">
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <h2 class="text-2xl font-bold mb-4" style="text-shadow: 6px 0px 18px; text-align: center; font-variant: normal; font-family: 'Open Sans', sans-serif; font-size: 27px; line-height: -10px; color: #0183fb; font-weight: 700; letter-spacing: 15px; text-indent: 0px; font-style: normal; text-decoration: none; text-transform: none; display: block; visibility: visible; cursor: grabbing; object-fit: contain; flex-grow: 7; flex-basis: 5px; align-self: center; transition: font-size 8ms cubic-bezier(0.03, 0.83, 0.41, 0.90) 0ms;">SVGr</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="shapeType" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                                Shape Type:<span class="tooltip">ⓘ <span class="tooltiptext">Choose the shape you want to draw</span> </span>
+                            </label>
+                            <select id="shapeType" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="font-family: 'Open Sans', sans-serif; font-size: 15px; letter-spacing: 1px; font-style: normal; font-variant: normal; text-transform: capitalize; text-align: center; box-shadow: 4px 2px 12px 2px rgba(0, 0, 0, 0.63);">
+                                <option value="rectangle">Rectangle</option>
+                                <option value="circle">Circle</option>
+                                <option value="ellipse">Ellipse</option>
+                                <option value="line">Line</option>
+                                <option value="polygon">Polygon</option>
+                                <option value="freehand">Freehand</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fillColor" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                                Fill Color:<span class="tooltip">ⓘ <span class="tooltiptext">Choose the color to fill your shape</span> </span>
+                            </label>
+                            <input type="color" id="fillColor" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="strokeColor" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                                Stroke Color:<span class="tooltip">ⓘ <span class="tooltiptext">Choose the color for the shape's outline</span> </span>
+                            </label>
+                            <input type="color" id="strokeColor" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="strokeWidth" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                                Stroke Width:<span class="tooltip">ⓘ <span class="tooltiptext">Set the thickness of the shape's outline</span> </span>
+                            </label>
+                            <input type="number" id="strokeWidth" min="1" max="20000" value="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="polygonSides" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                                Polygon Sides:<span class="tooltip">ⓘ <span class="tooltiptext">Set the number of sides for the polygon</span> </span>
+                            </label>
+                            <input type="number" id="polygonSides" min="3" max="100" value="6" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style="font-size: 16px; line-height: 19px; font-weight: lighter; letter-spacing: 2px; text-indent: 1px; font-style: normal; font-variant: normal; text-decoration: none; text-transform: capitalize; text-align: justify; direction: ltr; text-shadow: 0 0px 6px; font-family: 'Open Sans', sans-serif;">
+                        </div>
+                        <div class="flex space-x-4">
+                            <button id="clearCanvas" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="font-family: 'Open Sans', sans-serif; font-size: 14px; color: rgba(0, 0, 0, 0.9); font-weight: 700; letter-spacing: 2px; text-indent: 0px; font-style: normal; font-variant: normal; text-decoration: none; text-align: center; text-transform: lowercase; background-image: linear-gradient(140deg, rgb(234, 234, 234) 10%, rgb(214, 234, 255) 90%); background-repeat: repeat-x; background-size: 1px; background-position: 1px; background-attachment: fixed; background-origin: initial; border-top-left-radius: 0px; border-width: 4px; border-color: #656565; border-bottom-left-radius: 0px; outline: 0px; outline-offset: 0px; display: inline;">
+                                Clear Canvas
+</button>
+                            <button id="exportSVG" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="font-family: 'Open Sans', sans-serif; font-size: 14px; color: rgba(0, 0, 0, 0.9); font-weight: 700; letter-spacing: 2px; text-indent: 0px; font-style: normal; font-variant: normal; text-decoration: none; text-align: center; text-transform: lowercase; background-image: linear-gradient(140deg, rgb(234, 234, 234) 10%, rgb(214, 234, 255) 90%); background-repeat: repeat-x; background-size: 1px; background-position: 1px; background-attachment: fixed; background-origin: initial; border-top-left-radius: 0px; border-width: 4px; border-color: #0060ff; border-bottom-left-radius: 0px; outline: 0px; outline-offset: 0px; display: inline; text-shadow: 0px 2px 5px rgba(11, 3, 211, 0.84);">
+                                Export SVG
+</button>
+                        </div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded">
+                        <svg id="svgCanvas" height="406" class="border border-gray-300" data-pg-name="canvas" title="canvas" viewBox="0" width="100%" fill="currentColor" style="border: thick double#000; box-shadow: 0px 27px 80px -9px;"></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        const svgCanvas = document.getElementById('svgCanvas');
+        const clearCanvasBtn = document.getElementById('clearCanvas');
+        const exportSVGBtn = document.getElementById('exportSVG');
+        let isDrawing = false;
+        let currentShape = null;
+
+        function startShape(event) {
+            const shapeType = document.getElementById('shapeType').value;
+            const fillColor = document.getElementById('fillColor').value;
+            const strokeColor = document.getElementById('strokeColor').value;
+            const strokeWidth = document.getElementById('strokeWidth').value;
+
+            const rect = svgCanvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            switch (shapeType) {
+                case 'rectangle':
+                    currentShape = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    currentShape.setAttribute('x', x);
+                    currentShape.setAttribute('y', y);
+                    break;
+                case 'circle':
+                    currentShape = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    currentShape.setAttribute('cx', x);
+                    currentShape.setAttribute('cy', y);
+                    break;
+                case 'ellipse':
+                    currentShape = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+                    currentShape.setAttribute('cx', x);
+                    currentShape.setAttribute('cy', y);
+                    break;
+                case 'line':
+                    currentShape = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    currentShape.setAttribute('x1', x);
+                    currentShape.setAttribute('y1', y);
+                    currentShape.setAttribute('x2', x);
+                    currentShape.setAttribute('y2', y);
+                    break;
+                case 'polygon':
+                    const sides = document.getElementById('polygonSides').value;
+                    currentShape = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                    const points = [];
+                    for (let i = 0; i < sides; i++) {
+                        const angle = i * (360 / sides);
+                        const pointX = x + 50 * Math.cos(angle * Math.PI / 180);
+                        const pointY = y + 50 * Math.sin(angle * Math.PI / 180);
+                        points.push(`${pointX},${pointY}`);
+                    }
+                    currentShape.setAttribute('points', points.join(' '));
+                    break;
+                case 'freehand':
+                    currentShape = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    currentShape.setAttribute('d', `M ${x} ${y}`);
+                    break;
+            }
+
+            currentShape.setAttribute('fill', fillColor);
+            currentShape.setAttribute('stroke', strokeColor);
+            currentShape.setAttribute('stroke-width', strokeWidth);
+            svgCanvas.appendChild(currentShape);
+            isDrawing = true;
+        }
+
+        function drawShape(event) {
+            if (!isDrawing) return;
+
+            const rect = svgCanvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const shapeType = document.getElementById('shapeType').value;
+
+            switch (shapeType) {
+                case 'rectangle':
+                    const startX = parseFloat(currentShape.getAttribute('x'));
+                    const startY = parseFloat(currentShape.getAttribute('y'));
+                    const width = x - startX;
+                    const height = y - startY;
+                    currentShape.setAttribute('width', Math.abs(width));
+                    currentShape.setAttribute('height', Math.abs(height));
+                    if (width < 0) currentShape.setAttribute('x', x);
+                    if (height < 0) currentShape.setAttribute('y', y);
+                    break;
+                case 'circle':
+                    const cx = parseFloat(currentShape.getAttribute('cx'));
+                    const cy = parseFloat(currentShape.getAttribute('cy'));
+                    const radius = Math.sqrt(Math.pow(x - cx, 2) + Math.pow(y - cy, 2));
+                    currentShape.setAttribute('r', radius);
+                    break;
+                case 'ellipse':
+                    const ecx = parseFloat(currentShape.getAttribute('cx'));
+                    const ecy = parseFloat(currentShape.getAttribute('cy'));
+                    const rx = Math.abs(x - ecx);
+                    const ry = Math.abs(y - ecy);
+                    currentShape.setAttribute('rx', rx);
+                    currentShape.setAttribute('ry', ry);
+                    break;
+                case 'line':
+                    currentShape.setAttribute('x2', x);
+                    currentShape.setAttribute('y2', y);
+                    break;
+                case 'freehand':
+                    const d = currentShape.getAttribute('d');
+                    currentShape.setAttribute('d', `${d} L ${x} ${y}`);
+                    break;
+            }
+        }
+
+        function endShape() {
+            isDrawing = false;
+            currentShape = null;
+        }
+
+        svgCanvas.addEventListener('mousedown', startShape);
+        svgCanvas.addEventListener('mousemove', drawShape);
+        svgCanvas.addEventListener('mouseup', endShape);
+        svgCanvas.addEventListener('mouseleave', endShape);
+
+        clearCanvasBtn.addEventListener('click', () => {
+            while (svgCanvas.firstChild) {
+                svgCanvas.removeChild(svgCanvas.firstChild);
+            }
+        });
+
+        exportSVGBtn.addEventListener('click', () => {
+            const svgData = new XMLSerializer().serializeToString(svgCanvas);
+            const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+            const svgUrl = URL.createObjectURL(svgBlob);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = svgUrl;
+            downloadLink.download = 'drawing.svg';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
+    </script>
+    </body>
+</html>
